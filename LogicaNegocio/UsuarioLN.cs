@@ -11,7 +11,6 @@ namespace LogicaNegocio
 {
     public class UsuarioLN
     {
-     
         //Método Crear usuario
         public static void crearUser(Usuario usuario)
         {
