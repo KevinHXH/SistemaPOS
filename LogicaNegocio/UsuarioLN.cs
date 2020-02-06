@@ -11,7 +11,7 @@ namespace LogicaNegocio
 {
     public class UsuarioLN
     {
-        //Método Crear usuario final
+        //Método Crear usuario final2
         public static void crearUser(Usuario usuario)
         {
             UsuarioDatos.Insertar(usuario);
