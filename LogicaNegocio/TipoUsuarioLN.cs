@@ -11,7 +11,8 @@ namespace LogicaNegocio
 {
     public class TipoUsuarioLN
     {
-        //Seleccionar todos los tipos de usuario2
+        //Seleccionar todos los tipos de usuario
+        //Hola perros, ya lo logrè 
         public static List<TipoUsuario> ObtenerTodos()
         {
             List<TipoUsuario> lista = new List<TipoUsuario>();
