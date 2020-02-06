@@ -11,7 +11,7 @@ namespace LogicaNegocio
 {
     public class UsuarioLN
     {
-        //Método Crear usuario yoop
+        //Método Crear usuario yoopddd
         public static void crearUser(Usuario usuario)
         {
             UsuarioDatos.Insertar(usuario);
