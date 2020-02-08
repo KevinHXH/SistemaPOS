@@ -48,7 +48,7 @@
                 </LevelMenuItemStyles>
             </asp:Menu>
             
-            <%-- Usuarioo --%>
+            <%-- Usuariooo --%>
 
             <span class="navbar-text">Usuario: 
             <asp:Label ID="lblNombreUsuario" 
