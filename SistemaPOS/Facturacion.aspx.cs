@@ -13,5 +13,20 @@ namespace SistemaPOS
         {
 
         }
+
+        protected void linkLogout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
