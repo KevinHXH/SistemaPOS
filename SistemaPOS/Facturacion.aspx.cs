@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entidad;
+using LogicaNegocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,13 @@ namespace SistemaPOS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                ddlProductoo.DataSource = ProductoLN.ObtenerTodos();
+                ddlProductoo.DataTextField = "NombreProducto";
+                ddlProductoo.DataValueField = "idProducto";
+                ddlProductoo.DataBind();
+            }
         }
 
         protected void linkLogout_Click(object sender, EventArgs e)
@@ -19,14 +27,19 @@ namespace SistemaPOS
 
         }
 
-        protected void ddlProducto_SelectedIndexChanged(object sender, EventArgs e)
+      
+
+        protected void ddlProductoo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        protected void btnAgregar_Click(object sender, EventArgs e)
+        protected void Agregar2_Click(object sender, EventArgs e)
         {
-
+            Producto producto = new Producto();
+            producto = ProductoLN.Obtener(Convert.ToInt32(ddlProductoo.SelectedValue));
+            grvListado.DataSource = ProductoLN.ObtenerTodosPorProducto(producto);
+            grvListado.DataBind();
         }
     }
 }

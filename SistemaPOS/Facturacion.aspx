@@ -27,6 +27,15 @@
              background: linear-gradient(to right, #ff8000, #d16a0c);
         }
 
+         .gradient-background-overlay:after, .background-overlay:after {
+
+             height:30%;
+         }
+
+         .breadcumb-title{
+             margin-top:-100px;
+         }
+
     </style>
    
 </head>
@@ -66,53 +75,7 @@
         <%-- Fin Menu --%>
         <%-- Contenido --%>
 
-          <header class="header-area">
-        <!-- Top Header Area -->
-        <div class="top-header-area gradient-background">     
-        </div>
-        <!-- Main Header Area -->
-        <div class="main-header-area" id="stickyHeader">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12 h-100">
-                        <div class="main-menu h-100">
-                            <nav class="navbar h-100 navbar-expand-lg">
-                                <!-- Logo Area  -->
-                                <a class="navbar-brand" href="index.html"></a>
-
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#medicaMenu" aria-controls="medicaMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i> Menu</button>
-
-                                <div class="collapse navbar-collapse" id="medicaMenu">
-                                    <!-- Menu Area -->
-                                    <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
-                                            <a class="nav-link" style="color:#ff8000" href="indexAdministrador.aspx">Inicio</a>
-                                        </li>
-                                        <li class="nav-item dropdown" >
-                                            <a class="nav-link dropdown-toggle" onmouseout="this.style.color='black'" onmouseover="this.style.color='#ff8000'"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mantenimientos</a>
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" onmouseout="this.style.color='black'" onmouseover="this.style.color='#ff8000'" href="ManteAlergias.aspx">Alergias</a>
-                                                <a class="dropdown-item" onmouseout="this.style.color='black'" onmouseover="this.style.color='#ff8000'" href="ManteEnfermedades.aspx">Enfermedades</a>
-                                                <a class="dropdown-item" onmouseout="this.style.color='black'" onmouseover="this.style.color='#ff8000'" href="ManteActividades.aspx">Actividades Físicas</a>                             
-                                            </div>
-                                        </li>
-                                         <li class="nav-item">
-                                            <a class="nav-link" onmouseout="this.style.color='black'" onmouseover="this.style.color='#ff8000'" href="RegistroUsuarioAdministrador.aspx">Registrar Usuarios</a>
-                                        </li> 
-                                        <li class="nav-item">
-                                            <a class="nav-link" onmouseout="this.style.color='black'" onmouseover="this.style.color='#ff8000'" href="about-us2.aspx">Acerca de</a>
-                                        </li>                                 
-                                        
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
+        
 
          <div>
 
@@ -122,14 +85,9 @@
                     <div class="col-12">
                         <div class="breadcumb-content">
                             <!-- Title -->
-                            <h3 class="breadcumb-title">Listado de Citas del Paciente</h3>
+                            <h3 class="breadcumb-title">Sistema POS de Facturación</h3>
                             <!-- Breadcumb -->
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="indexPaciente.aspx">Inicio</a></li>
-                                    <li class="breadcrumb-item active">Listado</li>
-                                </ol>
-                            </nav>
+                           
                         </div>
                     </div>
                 </div>
@@ -144,7 +102,7 @@
 
          <div class="col-md-6 order-md-2 mb-4" style="margin-left:140px;">
                        
-                        <h4 class="mb-3">Listado de Citas del Paciente</h4>
+                       
                        
                     </div>
              <br />
@@ -153,23 +111,65 @@
              <br />
              <br />
 
-            
 
-             <table  style="margin-left:155px;margin-top:-50px;border-collapse: separate;"  >
 
-  <tr>
+             <table style="margin-left: 155px; margin-top: -360px; border-collapse: separate;">
 
-   <td>Producto:</td> 
+                 <tr>
 
-    <td > <asp:DropDownList ID="DropDownList1" style="width:130px;"  class="form-control" runat="server" OnSelectedIndexChanged="ddlProducto_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>  </td>
+                     <td>Producto:</td>
 
-    <td><asp:Button ID="Button1" style="margin-top:-26px; background:#ff8000;border:#ff8000;" class="btn btn-primary"  runat="server" Text="Agregar" OnClick="btnAgregar_Click" /> </td>
+                     <td>
+                         <asp:DropDownList ID="ddlProductoo" Style="width: 130px;" class="form-control" runat="server" OnSelectedIndexChanged="ddlProductoo_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                     </td>
 
-  </tr>
+                     <td>
+                         <asp:Button ID="Agregar2" Style="margin-top: -26px; background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server" Text="Agregar" OnClick="Agregar2_Click" />
+                     </td>
 
-  
+                 </tr>
 
-</table>
+             </table>
+
+
+
+             <div class="col-md-6 order-md-2 mb-4" >
+                            <h4 class="mb-3">Productos a facturar</h4>
+                            <asp:GridView ID="grvListado" runat="server"
+                                CssClass="table table-hover"
+                                AutoGenerateColumns="false"
+                                DataKeyNames="idProducto"
+                                OnSelectedIndexChanged="grvListado_SelectedIndexChanged" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" Width="900">
+                                <AlternatingRowStyle BackColor="#F7F7F7"></AlternatingRowStyle>
+                                <Columns>
+                                  <asp:BoundField HeaderText="Código" DataField="IdProducto"/>
+                                  <asp:BoundField HeaderText="Nombre" DataField="NombreProducto"/>
+                                     <asp:BoundField HeaderText="Precio" DataField="PrecioProducto"/>
+                                    <asp:BoundField HeaderText="Precio" DataField="PrecioProducto"/>
+                                     <asp:BoundField HeaderText="Impuesto" DataField="Impuesto"/>
+                                    <asp:BoundField HeaderText="Estado" DataField="Estado"/>
+                                </Columns>
+                                 <EmptyDataTemplate>
+                                No hay productos en la factura!
+                            </EmptyDataTemplate>
+                                <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C"></FooterStyle>
+
+                                <HeaderStyle CssClass="table-dark" BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+                                <PagerStyle HorizontalAlign="Right" BackColor="#E7E7FF" ForeColor="#4A3C8C"></PagerStyle>
+
+                                <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C"></RowStyle>
+
+                                <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7"></SelectedRowStyle>
+
+                                <SortedAscendingCellStyle BackColor="#F4F4FD"></SortedAscendingCellStyle>
+
+                                <SortedAscendingHeaderStyle BackColor="#5A4C9D"></SortedAscendingHeaderStyle>
+
+                                <SortedDescendingCellStyle BackColor="#D8D8F0"></SortedDescendingCellStyle>
+
+                                <SortedDescendingHeaderStyle BackColor="#3E3277"></SortedDescendingHeaderStyle>
+                            </asp:GridView>
+                        </div>
 
                   
                                    
