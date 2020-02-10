@@ -8,7 +8,7 @@
 <meta name="description" content=""/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>ExpeMedical-Inicio</title>
+    <title>Facturación</title>
  <!-- Favicon  -->
     <link rel="icon" href="img/core-img/favicon.ico"/>
     <!-- Core Style CSS -->
@@ -75,65 +75,23 @@
         <%-- Fin Menu --%>
         <%-- Contenido --%>
 
-        
-
          <div>
-
-        <section class="breadcumb-area bg-img gradient-background-overlay" style="background-image: url(img/bg-img/hero6.jpg);">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12">
-                        <div class="breadcumb-content">
-                            <!-- Title -->
-                            <h3 class="breadcumb-title">Sistema POS de Facturación</h3>
-                            <!-- Breadcumb -->
-                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-         <br />
-         <br />
-         <br />
-         <br />
-        
-         
-
-         <div class="col-md-6 order-md-2 mb-4" style="margin-left:140px;">
-                       
-                       
-                       
-                    </div>
-             <br />
-             <br />
-             <br />
-             <br />
-             <br />
-
-
-
-             <table style="margin-left: 155px; margin-top: -360px; border-collapse: separate;">
-
-                 <tr>
-
+             <div class="col-md-6 order-md-2 mb-4" >
+                 <table>
+                      <tr>
                      <td>Producto:</td>
 
                      <td>
-                         <asp:DropDownList ID="ddlProductoo" Style="width: 130px;" class="form-control" runat="server" OnSelectedIndexChanged="ddlProductoo_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                         <asp:DropDownList ID="ddlProductoo" runat="server"></asp:DropDownList>
                      </td>
 
                      <td>
                          <asp:Button ID="Agregar2" Style="margin-top: -26px; background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server" Text="Agregar" OnClick="Agregar2_Click" />
                      </td>
-
                  </tr>
-
-             </table>
-
-
-
-             <div class="col-md-6 order-md-2 mb-4" >
+                 </table>      
+                  <br /> 
+                  <br />           
                             <h4 class="mb-3">Productos a facturar</h4>
                             <asp:GridView ID="grvListado" runat="server"
                                 CssClass="table table-hover"
@@ -171,200 +129,33 @@
                             </asp:GridView>
                         </div>
 
-                  
-                                   
-                                     
+                   <table style="margin-left: 155px; margin-top: 350px; border-collapse: separate;">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         <br />
-         <br />
-         <br />
-         <br />
-         <br />
-         <br />
-         <br />
-         <br />
-
-
+                 <tr>
+                     <td>
+                         Descuento:
+                         <asp:TextBox ID="TxtDescuento" Text="" runat="server"></asp:TextBox>    
+                     </td>
+                     <td>
+                         <asp:Button ID="BtnDescuento" Style="background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server" Text="Aplicar" OnClick="BtnDescuento_Click" />             
+                     </td>
+                     <td>
+                         Sub Total:
+                         <asp:TextBox ID="txtSubTotal" Text="" runat="server" Enabled="False"></asp:TextBox>
+                     </td>                  
+                      <td>
+                         Total:
+                         <asp:TextBox ID="TxtTotal" Text="" runat="server" Enabled="False"></asp:TextBox>
+                     </td>
+                     <td>
+                         <asp:Button ID="BtnProcesarFactura" Style="background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server" Text="Facturar" />
+                       <br />
+                     </td>
+                 </tr>
+             </table>
          </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
-            <footer class="footer-area">
-        <!-- Main Footer Area -->
-        <div class="main-footer-area section_padding_100 bg-default">
-            <div class="container" style="margin-left:330px;">
-                <div class="row">
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="footer-widget-area">
-                            <div class="footer-logo">
-                               
-                            </div>
-                            <p>ExpeMedical CR, tú mejor opción de expediente digital</p>
-                            <div class="footer-social-info">
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="footer-widget-area">
-                            <div class="widget-title">
-                                <h6>Últimas noticias</h6>
-                            </div>
-                            <div class="widget-blog-post">
-                                <!-- Single Blog Post -->
-                                <div class="widget-single-blog-post d-flex">
-                                    <div class="widget-post-thumbnail pr-2">
-                                        
-                                    </div>
-                                    <div class="widget-post-content">
-                                        <a href="#">Un gran descubrimiento para la medicina</a>
-                                        <p>Dic 02, 2017</p>
-                                    </div>
-                                </div>             
-                                <div class="widget-single-blog-post d-flex">
-                                    <div class="widget-post-thumbnail pr-2">
-                                        
-                                    </div>
-                                    <div class="widget-post-content">
-                                        <a href="#">Información sobre Pastillas</a>
-                                        <p>Nov 03, 2017</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="footer-widget-area">
-                            <div class="widget-title">
-                                <h6>Contáctanos</h6>
-                            </div>
-
-                            <div class="widget-contact">
-                                <!-- Single Contact Info -->
-                                <div class="widget-single-contact d-flex align-items-center">
-                                    <div class="widget-contact-thumbnail mr-15">
-                                        
-                                    </div>
-                                    <div class="widget-contact-info">
-                                         <p>Lunes - Viernes 5:30 am - 6:00 pm <br/> Sábado y Domingo - Fuera de Servicio</p>
-                                    </div>
-                                </div>
-                                <!-- Single Contact Info -->
-                                <div class="widget-single-contact d-flex align-items-center">
-                                    <div class="widget-contact-thumbnail mr-15">
-                                       
-                                    </div>
-                                    <div class="widget-contact-info">
-                                         <p>Alajuela, Costa Rica <br/> 20102 San Antonio</p>
-                                    </div>
-                                </div>
-                                <!-- Single Contact Info -->
-                                <div class="widget-single-contact d-flex align-items-center">
-                                    <div class="widget-contact-thumbnail mr-15">
-                                        
-                                    </div>
-                                    <div class="widget-contact-info">
-                                         <p>2442 0898<br/> ExpeMedicalCR@gmail.com</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Bottom Footer Area -->
-        <div class="bottom-footer-area">
-            <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100">
-                        <div class="bottom-footer-content h-100 d-md-flex align-items-center justify-content-between">
-                            <!-- Copywrite Text -->
-                            <div class="copywrite-text">
-                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-                            </div>
-                            <!-- Footer Menu -->
-                            <div class="footer-menu">
-                                <nav>
-                                    <ul>
-                                        <li><a href="#">Inicio</a></li>
-                                        <li><a href="#">Sobre nosotros</a></li>
-                                        <li><a href="#">Doctores</a></li>
-                                        <li><a href="#">Servicios</a></li>
-                                        <li><a href="#">Contacto</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
     <!-- **** Footer Area End **** -->
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->

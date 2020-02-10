@@ -11,6 +11,8 @@ namespace SistemaPOS
 {
     public partial class Facturacion : System.Web.UI.Page
     {
+        List<Producto> prodSeleccionados = new List<Producto>();
+        Producto producto = new Producto();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -18,7 +20,8 @@ namespace SistemaPOS
                 ddlProductoo.DataSource = ProductoLN.ObtenerTodos();
                 ddlProductoo.DataTextField = "NombreProducto";
                 ddlProductoo.DataValueField = "idProducto";
-                ddlProductoo.DataBind();
+                ddlProductoo.DataBind(); 
+                          
             }
         }
 
@@ -36,10 +39,20 @@ namespace SistemaPOS
 
         protected void Agregar2_Click(object sender, EventArgs e)
         {
-            Producto producto = new Producto();
-            producto = ProductoLN.Obtener(Convert.ToInt32(ddlProductoo.SelectedValue));
-            grvListado.DataSource = ProductoLN.ObtenerTodosPorProducto(producto);
+            this.producto = ProductoLN.Obtener(Convert.ToInt32(ddlProductoo.SelectedValue));
+            prodSeleccionados.Add(producto);
+            grvListado.DataSource = prodSeleccionados;
             grvListado.DataBind();
+        }
+
+        protected void grvListado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BtnDescuento_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

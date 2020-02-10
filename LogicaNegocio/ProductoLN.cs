@@ -33,7 +33,7 @@ namespace LogicaNegocio
         public static List<Producto> ObtenerTodos()
         {
             List<Producto> lista = new List<Producto>();
-
+         
             DataSet ds = ProductoDatos.SeleccionarTodos();
             foreach (DataRow row in ds.Tables[0].Rows)
             {
