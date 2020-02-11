@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Facturacion.aspx.cs" Inherits="SistemaPOS.Facturacion" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -86,7 +88,7 @@
                      </td>
 
                      <td>
-                         <asp:Button ID="Agregar2" Style="margin-top: -26px; background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server" Text="Agregar" OnClick="Agregar2_Click" />
+                         <asp:Button ID="Agregar2" Style="margin-top: -26px; background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server"  Text="Agregar" OnClick="Agregar2_Click" autopostback="false" />
                      </td>
                  </tr>
                  </table>      
@@ -102,10 +104,15 @@
                                 <Columns>
                                   <asp:BoundField HeaderText="Código" DataField="IdProducto"/>
                                   <asp:BoundField HeaderText="Nombre" DataField="NombreProducto"/>
-                                     <asp:BoundField HeaderText="Precio" DataField="PrecioProducto"/>
-                                    <asp:BoundField HeaderText="Precio" DataField="PrecioProducto"/>
+                                     <asp:BoundField HeaderText="Precio" DataField="PrecioProducto" DataFormatString="{0:0.00}"/>
+                                  
                                      <asp:BoundField HeaderText="Impuesto" DataField="Impuesto"/>
-                                    <asp:BoundField HeaderText="Estado" DataField="Estado"/>
+                                    <asp:BoundField HeaderText="Estado" DataField="Estado"/>   
+                                     <asp:TemplateField HeaderText="Cantidad" ItemStyle-Width="200px" >
+                                        <ItemTemplate>
+                                            <input type="number" max="50" min="1" style="width:50px;" />   
+                                        </ItemTemplate> 
+                                        </asp:TemplateField>                        
                                 </Columns>
                                  <EmptyDataTemplate>
                                 No hay productos en la factura!
@@ -141,17 +148,18 @@
                      </td>
                      <td>
                          Sub Total:
-                         <asp:TextBox ID="txtSubTotal" Text="" runat="server" Enabled="False"></asp:TextBox>
+                         <asp:TextBox ID="txtSubTotal" Text="" runat="server" Enabled="False" DataFormatString="{0:0.00}"></asp:TextBox>
                      </td>                  
                       <td>
                          Total:
-                         <asp:TextBox ID="TxtTotal" Text="" runat="server" Enabled="False"></asp:TextBox>
+                         <asp:TextBox ID="TxtTotal" Text="" runat="server" Enabled="False" DataFormatString="{0:0.00}"></asp:TextBox>
                      </td>
                      <td>
-                         <asp:Button ID="BtnProcesarFactura" Style="background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server" Text="Facturar" />
+                         <asp:Button ID="BtnProcesarFactura" Style="background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server" Text="Facturar" OnClick="BtnProcesarFactura_Click" />
                        <br />
                      </td>
                  </tr>
+                       <asp:Label ID="LblMensaje" ForeColor="blue" runat="server" Text=""></asp:Label>
              </table>
          </div>
 

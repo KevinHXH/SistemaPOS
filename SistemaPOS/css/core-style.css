@@ -28,12 +28,12 @@
 
 /* :: 2.0 Import All CSS */
 
-@import '../css/bootstrap.min.css';
-@import '../css/owl.carousel.css';
-@import '../css/magnific-popup.css';
-@import '../css/animate.css';
-@import '../css/font-awesome.min.css';
-@import '../css/themify-icons.css';
+@import url('bootstrap.min.css');
+@import url('owl.carousel.css');
+@import url('magnific-popup.css');
+@import url('animate.css');
+@import url('font-awesome.min.css');
+@import url('themify-icons.css');
 
 /* :: 3.0 Base CSS */
 
