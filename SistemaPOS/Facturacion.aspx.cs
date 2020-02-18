@@ -11,9 +11,8 @@ namespace SistemaPOS
 {
     public partial class Facturacion : System.Web.UI.Page
     {
-        List<Producto> prodSeleccionados = new List<Producto>();
-        List<Producto> prodSeleccionadosAux = new List<Producto>();
-
+        List<Producto> listaX = new List<Producto>();
+        List<Producto> lista = new List<Producto>();
         Producto producto = new Producto();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,8 +22,6 @@ namespace SistemaPOS
                 ddlProductoo.DataTextField = "NombreProducto";
                 ddlProductoo.DataValueField = "idProducto";
                 ddlProductoo.DataBind();
-                grvListado.DataSource = Session["lista"];
-                grvListado.DataBind();
             }
         }
 
@@ -40,37 +37,63 @@ namespace SistemaPOS
 
         }
 
-        protected void Agregar2_Click(object sender, EventArgs e)
-        {
-            this.producto = ProductoLN.Obtener(Convert.ToInt32(ddlProductoo.SelectedValue));
-            Session["productoSeleccionado"] = this.producto;
-            Producto prod = new Producto();
-            prod = (Producto)Session["productoSeleccionado"];
-
-            List<Producto> listaAux = new List<Producto>();
-            listaAux.Add(prod);
-            Session["lista"] = listaAux;
-
-            List<Producto> listaFinal = (List<Producto>)Session["lista"];
-            foreach (Producto p in listaFinal)
+        protected void Agregar2_Click(object sender, EventArgs e) {
+            
+            if (Session["lista"] != null)
             {
-
+                listaX = (List<Producto>)Session["lista"];
             }
-            grvListado.DataSource = listaFinal;
+            
+            this.producto = ProductoLN.Obtener(Convert.ToInt32(ddlProductoo.SelectedValue));
+
+            foreach (Producto pro in ProductoLN.ObtenerTodos())
+            {
+                if (pro.idProducto == this.producto.idProducto)
+                {
+                    calcula2X1();
+                    lista.Add(pro);
+                    Session["lista"] = lista;
+                }
+            }
+
+            foreach (Producto prod in (List<Producto>)Session["lista"])
+            {
+                listaX.Add(prod);
+                Session["listaF"] = listaX;
+            }
+
+            grvListado.DataSource = (List<Producto>)Session["listaF"];
             grvListado.DataBind();
 
-            foreach (Producto p in listaFinal)
+            decimal total = 0;
+            decimal subtotal = 0;
+            decimal monto = 0;
+            decimal montoTotal = 0;
+            decimal precioProducto = 0;
+
+            foreach (Producto p in (List<Producto>)Session["listaF"])
             { 
-                decimal subtotal = p.precioProducto;
-                decimal total = 0;
-                decimal monto = (subtotal + total);
-                decimal montoTotal = monto + (monto * p.impuesto/100);
+                 precioProducto = p.precioProducto;
+                 subtotal = subtotal + precioProducto;            
+                 monto = (subtotal + total);
+                 montoTotal = monto + (monto * p.impuesto/100);
 
                 txtSubTotal.Text = subtotal.ToString();
                 TxtTotal.Text = montoTotal.ToString();
                 
             }
 
+        }
+
+        public void calcula2X1()
+        {
+            foreach (Producto pro in ProductoLN.ObtenerTodos())
+            {
+                if (pro.nombreProducto.Equals("Gelatina"))
+                {
+                    pro.precioProducto = pro.precioProducto / 2;
+                }
+            }
         }
 
         protected void grvListado_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,12 +103,22 @@ namespace SistemaPOS
 
         protected void BtnDescuento_Click(object sender, EventArgs e)
         {
-            int descuento = Convert.ToInt32(TxtDescuento.Text) / 100;
-            decimal total = Convert.ToDecimal(TxtTotal.Text);
+            int des = Convert.ToInt32(TxtDescuento.Text);
+            decimal total = Convert.ToDecimal(txtSubTotal.Text);
+            decimal desX = des*10;
+            decimal desFinal = desX / 100;
+            decimal desF2 = desFinal / 10;
 
-            decimal montoDes = total - (total * descuento);
+            if (des<=10 && des>=1)
+            {
+                decimal montoDes = total - (total * desF2);
+                TxtTotal.Text = montoDes.ToString();
+            }else
+            {
+                LblMensaje.Text = "Descuento debe ser minimo de 1% y maximo de 10%";
+            }
 
-            TxtTotal.Text = montoDes.ToString();
+           
         }
 
         protected void BtnProcesarFactura_Click(object sender, EventArgs e)
@@ -93,5 +126,36 @@ namespace SistemaPOS
             LblMensaje.Text = "Factura Procesada con éxito";
             grvListado.DataBind();
         }
+
+        protected void btnCalcular_Click(object sender, EventArgs e)
+        {
+            foreach (GridView row in grvListado.Rows)
+            {
+                TextBox txtr = (TextBox)grvListado.Rows[5].FindControl("txtCantidad");
+                String res = txtr.Text;
+                int cantidad = Convert.ToInt32(res);
+
+                foreach(Producto p in (List<Producto>)Session["listaF"])
+                {
+                    String subtotal = txtSubTotal.Text;
+                    string total = TxtTotal.Text;
+                    decimal sub = Convert.ToDecimal(subtotal);
+                    decimal tot = Convert.ToDecimal(total);
+
+                    sub = (sub + p.precioProducto)*cantidad;
+                    tot = tot + sub;
+
+                    txtSubTotal.Text = sub.ToString();
+                    TxtTotal.Text = tot.ToString();
+
+                }
+               
+
+            }
+         
+        }
+
+
+
     }
 }

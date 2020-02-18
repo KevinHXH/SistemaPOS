@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="style.css"/>
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css"/>
-
      <style>
 
         .gradient-background-overlay:after, .background-overlay:after {
@@ -38,12 +37,11 @@
              margin-top:-100px;
          }
 
-    </style>
-   
+    </style> 
 </head>
 <body>
     <form id="form1" runat="server">
-       
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
             <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
             <asp:Menu ID="Menu1"
@@ -77,24 +75,53 @@
         <%-- Fin Menu --%>
         <%-- Contenido --%>
 
-         <div>
-             <div class="col-md-6 order-md-2 mb-4" >
+        <div class="cuadrado">
+            <h3 class="mb-3" style="color: white; font-size: 35px; margin-left: 520px;">Sistema POS Facturación</h3>
+        </div>
+        <style>
+            .cuadrado {
+                padding: 20px;
+                margin: 5px;
+                background-color: #ff8000;
+                border: solid 1px #ff8000;
+                color: white;
+            }
+        </style>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+
+        
+             <div style="margin-left: 155px; margin-top: -220px;">
                  <table>
                       <tr>
                      <td>Producto:</td>
-
                      <td>
-                         <asp:DropDownList ID="ddlProductoo" runat="server"></asp:DropDownList>
+                         <asp:DropDownList ID="ddlProductoo" Style="width: 130px;height:40px;"  runat="server"></asp:DropDownList>
                      </td>
-
                      <td>
-                         <asp:Button ID="Agregar2" Style="margin-top: -26px; background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server"  Text="Agregar" OnClick="Agregar2_Click" autopostback="false" />
+                         <asp:Button ID="Agregar2" Style=" background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server"  Text="Agregar" OnClick="Agregar2_Click" autopostback="false" />
                      </td>
                  </tr>
                  </table>      
                   <br /> 
                   <br />           
                             <h4 class="mb-3">Productos a facturar</h4>
+
+            <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+
                             <asp:GridView ID="grvListado" runat="server"
                                 CssClass="table table-hover"
                                 AutoGenerateColumns="false"
@@ -108,9 +135,9 @@
                                   
                                      <asp:BoundField HeaderText="Impuesto" DataField="Impuesto"/>
                                     <asp:BoundField HeaderText="Estado" DataField="Estado"/>   
-                                     <asp:TemplateField HeaderText="Cantidad" ItemStyle-Width="200px" >
+                                     <asp:TemplateField HeaderText="Cantidad" ItemStyle-Width="100px" >
                                         <ItemTemplate>
-                                            <input type="number" max="50" min="1" style="width:50px;" />   
+                                            <asp:TextBox ID="txtCantidad" style="width:30px;" runat="server"></asp:TextBox>
                                         </ItemTemplate> 
                                         </asp:TemplateField>                        
                                 </Columns>
@@ -134,10 +161,14 @@
 
                                 <SortedDescendingHeaderStyle BackColor="#3E3277"></SortedDescendingHeaderStyle>
                             </asp:GridView>
-                        </div>
+                <br /> 
+                <br /> 
+                 <asp:Button ID="btnCalcular" Style="margin-top: -26px; background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server"  Text="Calcular" OnClick="btnCalcular_Click" autopostback="false" />
+                      </ContentTemplate>
+                      </asp:UpdatePanel>
+                     </div>
 
-                   <table style="margin-left: 155px; margin-top: 350px; border-collapse: separate;">
-
+                   <table style="margin-left: 155px; margin-top: 160px; border-collapse: separate;">
                  <tr>
                      <td>
                          Descuento:
@@ -161,9 +192,14 @@
                  </tr>
                        <asp:Label ID="LblMensaje" ForeColor="blue" runat="server" Text=""></asp:Label>
              </table>
-         </div>
-
-
+         
+        <br /> 
+        <br /> 
+        <br /> 
+        <br />
+        <br /> 
+        <br />
+          
     <!-- **** Footer Area End **** -->
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
