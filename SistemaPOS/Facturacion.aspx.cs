@@ -13,6 +13,7 @@ namespace SistemaPOS
     {
         List<Producto> listaX = new List<Producto>();
         List<Producto> lista = new List<Producto>();
+        List<Producto> listaF = new List<Producto>();
         Producto producto = new Producto();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,11 +40,13 @@ namespace SistemaPOS
 
         protected void Agregar2_Click(object sender, EventArgs e) {
             
+            //Producto en sesión se añade a nueva lista
             if (Session["lista"] != null)
             {
                 listaX = (List<Producto>)Session["lista"];
             }
-            
+          
+            //Se obtine el producto del combo 
             this.producto = ProductoLN.Obtener(Convert.ToInt32(ddlProductoo.SelectedValue));
 
             foreach (Producto pro in ProductoLN.ObtenerTodos())
@@ -51,33 +54,27 @@ namespace SistemaPOS
                 if (pro.idProducto == this.producto.idProducto)
                 {
                     calcula2X1();
-                    lista.Add(pro);
-                    Session["lista"] = lista;
+                    listaX.Add(pro);
+                    Session["lista"] = listaX;
                 }
             }
 
-            foreach (Producto prod in (List<Producto>)Session["lista"])
-            {
-                listaX.Add(prod);
-                Session["listaF"] = listaX;
-            }
+            //foreach (Producto prod in (List<Producto>)Session["lista"])
+            //{
+            //    listaX.Add(prod);
+            //}
 
-            grvListado.DataSource = (List<Producto>)Session["listaF"];
+            grvListado.DataSource = listaX;
             grvListado.DataBind();
 
-            decimal total = 0;
-            decimal subtotal = 0;
-            decimal monto = 0;
-            decimal montoTotal = 0;
-            decimal precioProducto = 0;
+            decimal total = 0, subtotal = 0, monto = 0, montoTotal = 0, precioProducto = 0;
 
-            foreach (Producto p in (List<Producto>)Session["listaF"])
+            foreach (Producto p in listaX)
             { 
                  precioProducto = p.precioProducto;
                  subtotal = subtotal + precioProducto;            
                  monto = (subtotal + total);
                  montoTotal = monto + (monto * p.impuesto/100);
-
                 txtSubTotal.Text = subtotal.ToString();
                 TxtTotal.Text = montoTotal.ToString();
                 
