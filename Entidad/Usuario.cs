@@ -25,5 +25,11 @@ namespace Entidad
             this.nombreUsuario = nombreUsuario;
             this.password = password;
         }
+        public Usuario( string nombreUsuario, string password)
+        {
+            
+            this.nombreUsuario = nombreUsuario;
+            this.password = password;
+        }
     }
 }

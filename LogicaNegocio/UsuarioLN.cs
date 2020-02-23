@@ -16,7 +16,7 @@ namespace LogicaNegocio
         {
             UsuarioDatos.Insertar(usuario);
         }
-
+    
         //SeleccionarTodos
         public static List<Usuario> ObtenerTodos()
         {
@@ -35,6 +35,44 @@ namespace LogicaNegocio
             return lista;
         }
 
+        public static string iniciarSesion(string usuario, string pass)
+        {
+            string userX = "";
+            foreach (Usuario user in UsuarioLN.ObtenerTodos())
+            {
+                if (usuario.Equals(user.nombreUsuario) && pass.Equals(user.password) && user.tipoUsuario.idTipoUsuario == 1 || user.tipoUsuario.idTipoUsuario == 2)
+                {                   
+                   userX = "Facturacion.aspx";
+                }
+            }
+            return userX;
+        }
+
+        public static string registrarUsuario(string u, string pass, int tipoUser)
+        {
+            string userX = "";
+            //Crear nuevo usuario
+            foreach (Usuario user in UsuarioLN.ObtenerTodos())
+            {
+                Usuario usuario = new Usuario();
+                TipoUsuario tipo = new TipoUsuario();
+
+                usuario.nombreUsuario = u;
+                usuario.password = pass;
+
+                tipo = TipoUsuarioLN.Obtener(tipoUser);
+                usuario.tipoUsuario = tipo;
+
+                UsuarioLN.crearUser(usuario);
+                userX = "Facturacion.aspx";
+            }
+            return userX;
+        }
+
+        public static string regresar()
+        {
+            return "Login.aspx";
+        }
 
        
 

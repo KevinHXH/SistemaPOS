@@ -24,14 +24,7 @@ namespace SistemaPOS
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            foreach (Usuario user in UsuarioLN.ObtenerTodos())
-            {
-                if (txtUsuario.Text.Equals(user.nombreUsuario) && txtContrasena.Text.Equals(user.password) && user.tipoUsuario.idTipoUsuario==1 || user.tipoUsuario.idTipoUsuario==2)
-                {
-                    Session["usuario"] = user;
-                    Response.Redirect("Facturacion.aspx");
-                }
-            }
+            Response.Redirect(UsuarioLN.iniciarSesion(txtUsuario.Text, txtContrasena.Text));
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)

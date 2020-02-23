@@ -24,26 +24,14 @@ namespace SistemaPOS
 
         protected void btnRegistar_Click(object sender, EventArgs e)
         {
-            //Crear nuevo usuario
-            foreach (Usuario user in UsuarioLN.ObtenerTodos())
-            {
-                    Usuario usuario = new Usuario();
-                    TipoUsuario tipo = new TipoUsuario();
-
-                    usuario.nombreUsuario = txtUsuario.Text;
-                    usuario.password = txtContrasena.Text;
-                    
-                    tipo = TipoUsuarioLN.Obtener(Convert.ToInt32(ddlTipoUsuario.SelectedValue));
-                    usuario.tipoUsuario = tipo;
-             
-                    UsuarioLN.crearUser(usuario);
-                    Response.Redirect("Facturacion.aspx");
-            }
+            int idTipoUsuario = Convert.ToInt32(ddlTipoUsuario.SelectedValue);
+            UsuarioLN.registrarUsuario(txtUsuario.Text, txtContrasena.Text, idTipoUsuario);
+            Response.Redirect("Facturacion.aspx");                  
         }
 
         protected void Regresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            UsuarioLN.regresar();
         }
 
         protected void ddlTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)

@@ -59,5 +59,20 @@ namespace LogicaNegocio
             }
             return elemento;
         }
+
+        //Métodos 
+        public static decimal calcularDescuento(int des, decimal total)
+        {       
+            decimal desX = des * 10;
+            decimal desFinal = desX / 100;
+            decimal desF2 = desFinal / 10;
+            decimal montoDes = 0;
+
+            if (des <= 10 && des >= 1)
+            {
+              montoDes = total - (total * desF2);
+            }
+            return montoDes;
+        }
     }
 }

@@ -59,13 +59,9 @@ namespace SistemaPOS
                 }
             }
 
-            //foreach (Producto prod in (List<Producto>)Session["lista"])
-            //{
-            //    listaX.Add(prod);
-            //}
-
             grvListado.DataSource = listaX;
             grvListado.DataBind();
+
 
             decimal total = 0, subtotal = 0, monto = 0, montoTotal = 0, precioProducto = 0;
 
@@ -76,12 +72,9 @@ namespace SistemaPOS
                  monto = (subtotal + total);
                  montoTotal = monto + (monto * p.impuesto/100);
                 txtSubTotal.Text = subtotal.ToString();
-                TxtTotal.Text = montoTotal.ToString();
-                
+                TxtTotal.Text = montoTotal.ToString();  
             }
-
         }
-
         public void calcula2X1()
         {
             foreach (Producto pro in ProductoLN.ObtenerTodos())
@@ -93,6 +86,13 @@ namespace SistemaPOS
             }
         }
 
+        public void calcula2X1Factura()
+        {
+            DetalleFacturaLN detalle = new DetalleFacturaLN();
+            detalle.calcula2X1();
+        }
+
+
         protected void grvListado_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -102,20 +102,16 @@ namespace SistemaPOS
         {
             int des = Convert.ToInt32(TxtDescuento.Text);
             decimal total = Convert.ToDecimal(txtSubTotal.Text);
-            decimal desX = des*10;
-            decimal desFinal = desX / 100;
-            decimal desF2 = desFinal / 10;
-
-            if (des<=10 && des>=1)
-            {
-                decimal montoDes = total - (total * desF2);
-                TxtTotal.Text = montoDes.ToString();
-            }else
+           
+            if (des <= 10 && des >= 1)
+            {        
+                TxtTotal.Text = ProductoLN.calcularDescuento(des, total).ToString();
+            }
+            else
             {
                 LblMensaje.Text = "Descuento debe ser minimo de 1% y maximo de 10%";
             }
 
-           
         }
 
         protected void BtnProcesarFactura_Click(object sender, EventArgs e)
