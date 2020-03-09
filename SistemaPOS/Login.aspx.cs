@@ -24,7 +24,10 @@ namespace SistemaPOS
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Response.Redirect(UsuarioLN.iniciarSesion(txtUsuario.Text, txtContrasena.Text));
+            if(UsuarioLN.iniciarSesion(txtUsuario.Text, txtContrasena.Text)!=null)
+            {
+                Response.Redirect("Facturacion.aspx");
+            }
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)

@@ -35,28 +35,26 @@ namespace LogicaNegocio
             return lista;
         }
 
-        public static string iniciarSesion(string usuario, string pass)
+        public static Usuario iniciarSesion(string usuario, string pass)
         {
-            string userX = "";
+            Usuario u = new Usuario();  
             foreach (Usuario user in UsuarioLN.ObtenerTodos())
             {
                 if (usuario.Equals(user.nombreUsuario) && pass.Equals(user.password) && user.tipoUsuario.idTipoUsuario == 1 || user.tipoUsuario.idTipoUsuario == 2)
-                {                   
-                   userX = "Facturacion.aspx";
+                {
+                   u = user;
                 }
             }
-            return userX;
+            return u;
         }
 
-        public static string registrarUsuario(string u, string pass, int tipoUser)
+        public static Usuario registrarUsuario(string u, string pass, int tipoUser)
         {
-            string userX = "";
+            Usuario usuario = new Usuario();
+            TipoUsuario tipo = new TipoUsuario();
             //Crear nuevo usuario
             foreach (Usuario user in UsuarioLN.ObtenerTodos())
             {
-                Usuario usuario = new Usuario();
-                TipoUsuario tipo = new TipoUsuario();
-
                 usuario.nombreUsuario = u;
                 usuario.password = pass;
 
@@ -64,9 +62,8 @@ namespace LogicaNegocio
                 usuario.tipoUsuario = tipo;
 
                 UsuarioLN.crearUser(usuario);
-                userX = "Facturacion.aspx";
             }
-            return userX;
+            return usuario;
         }
 
         public static string regresar()

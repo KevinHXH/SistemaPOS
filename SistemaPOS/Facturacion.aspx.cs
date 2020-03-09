@@ -89,7 +89,7 @@ namespace SistemaPOS
         public void calcula2X1Factura()
         {
             DetalleFacturaLN detalle = new DetalleFacturaLN();
-            detalle.calcula2X1();
+            detalle.calcula2X1(2);
         }
 
 
@@ -122,30 +122,14 @@ namespace SistemaPOS
 
         protected void btnCalcular_Click(object sender, EventArgs e)
         {
-            foreach (GridView row in grvListado.Rows)
+            for (int fila = 0; fila < grvListado.Rows.Count - 1; fila++)
             {
-                TextBox txtr = (TextBox)grvListado.Rows[5].FindControl("txtCantidad");
-                String res = txtr.Text;
-                int cantidad = Convert.ToInt32(res);
-
-                foreach(Producto p in (List<Producto>)Session["listaF"])
+                for (int col = 0; col < grvListado.Rows[fila].Cells.Count; col++)
                 {
-                    String subtotal = txtSubTotal.Text;
-                    string total = TxtTotal.Text;
-                    decimal sub = Convert.ToDecimal(subtotal);
-                    decimal tot = Convert.ToDecimal(total);
-
-                    sub = (sub + p.precioProducto)*cantidad;
-                    tot = tot + sub;
-
-                    txtSubTotal.Text = sub.ToString();
-                    TxtTotal.Text = tot.ToString();
-
+                    string valor = grvListado.Rows[fila].Cells[5].ToString();      
                 }
-               
-
             }
-         
+
         }
 
 

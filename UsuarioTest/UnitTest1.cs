@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Entidad;
+using Datos;
+using LogicaNegocio;
 
 namespace UsuarioTest
 {
@@ -10,19 +12,44 @@ namespace UsuarioTest
         [TestMethod]
         public void CrearUsuarioTest()
         {
-            //int idUsuario = 207730811;
-            //TipoUsuario tipoUsuario = new TipoUsuario();
-            //tipoUsuario.idTipoUsuario = 1;
-            //tipoUsuario.nombreTipoUsuario = "Administrador";
-            //string usuario = "Kevin";
-            //string contrasennia = "123456";
+            //Usuario creado
+            Usuario u = new Usuario();
+            u.idUsuario = 207730811;
+            u.nombreUsuario = "kevin";
+            u.password = "kevin1897jcm";
+            TipoUsuario tipo = new TipoUsuario();
+            tipo.idTipoUsuario = 1;
+            tipo.nombreTipoUsuario = "Administrador";
+            u.tipoUsuario = tipo;
 
-            //Act
-            //LogicaNegocio.UsuarioLN.crearUser u = new LogicaNegocio.UsuarioLN()
-           
+            //Usuario obtenido
+            Usuario usuarioRegistrado = UsuarioLN.registrarUsuario("kevin", "kevin1897jcm",1);
 
-
-
+            Assert.AreEqual(u, usuarioRegistrado);
         }
+
+        [TestMethod]
+        public void LoginUsuarioTest()
+        {
+            //Usuario esperado
+            Usuario u = new Usuario();
+            u.idUsuario = 207730811;
+            u.nombreUsuario = "kevin";
+            u.password = "kevin1897jcm";
+            TipoUsuario tipo = new TipoUsuario();
+            tipo.idTipoUsuario = 1;
+            tipo.nombreTipoUsuario = "Administrador";
+            u.tipoUsuario = tipo;
+            
+            //Usuario obtenido
+            Usuario usuarioSesion = UsuarioLN.iniciarSesion("kevin", "kevin1897jcm");
+
+            Assert.AreEqual(u, usuarioSesion);
+        }
+
+
+
+
+
     }
 }

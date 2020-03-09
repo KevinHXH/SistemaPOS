@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{130AA99E-F277-405D-8767-733D323F2E41}</ProjectGuid>
+    <ProjectGuid>{7D7074C0-0CBD-42C5-A177-482CE4D14C49}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UsuarioTest</RootNamespace>
-    <AssemblyName>UsuarioTest</AssemblyName>
+    <RootNamespace>DetalleFacturaTest</RootNamespace>
+    <AssemblyName>DetalleFacturaTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -54,16 +54,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Datos\Datos.csproj">
-      <Project>{69563C7E-03C3-438F-A8A7-B9C1B900C955}</Project>
-      <Name>Datos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entidad\Entidad.csproj">
-      <Project>{4E5AB179-7770-441B-9057-F971D47C0403}</Project>
-      <Name>Entidad</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LogicaNegocio\LogicaNegocio.csproj">
-      <Project>{99f211b0-126f-4b90-aaf4-50ce244a726f}</Project>
+      <Project>{99F211B0-126F-4B90-AAF4-50CE244A726F}</Project>
       <Name>LogicaNegocio</Name>
     </ProjectReference>
   </ItemGroup>

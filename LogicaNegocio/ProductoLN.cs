@@ -11,7 +11,6 @@ namespace LogicaNegocio
 {
    public class ProductoLN
     {
-
         public static List<Producto> ObtenerTodosPorProducto(Producto producto)
         {
             List<Producto> lista = new List<Producto>();

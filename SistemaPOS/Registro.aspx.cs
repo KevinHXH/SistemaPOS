@@ -25,8 +25,10 @@ namespace SistemaPOS
         protected void btnRegistar_Click(object sender, EventArgs e)
         {
             int idTipoUsuario = Convert.ToInt32(ddlTipoUsuario.SelectedValue);
-            UsuarioLN.registrarUsuario(txtUsuario.Text, txtContrasena.Text, idTipoUsuario);
-            Response.Redirect("Facturacion.aspx");                  
+            if(UsuarioLN.registrarUsuario(txtUsuario.Text, txtContrasena.Text, idTipoUsuario)!=null)
+            {
+                Response.Redirect("Facturacion.aspx");
+            }                     
         }
 
         protected void Regresar_Click(object sender, EventArgs e)

@@ -9,15 +9,17 @@ namespace LogicaNegocio
 {
    public class DetalleFacturaLN
     {
-        public void calcula2X1()
+        public static decimal calcula2X1(int cantidad)
         {
+            decimal costo = 0;
             foreach (Producto pro in ProductoLN.ObtenerTodos())
             {
-                if (pro.nombreProducto.Equals("Gelatina"))
+                if (pro.nombreProducto.Equals("Gelatina") && cantidad == 2)
                 {
-                    pro.precioProducto = pro.precioProducto / 2;
+                    costo = pro.precioProducto = pro.precioProducto / 2;
                 }
             }
+            return costo;
         }
 
 
