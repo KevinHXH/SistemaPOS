@@ -10,7 +10,7 @@
 namespace SistemaPOS {
     
     
-    public partial class Facturacion {
+    public partial class Factura {
         
         /// <summary>
         /// Control form1.
@@ -67,24 +67,6 @@ namespace SistemaPOS {
         protected global::System.Web.UI.WebControls.LinkButton linkRegistrarse;
         
         /// <summary>
-        /// Control ddlProductoo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductoo;
-        
-        /// <summary>
-        /// Control Agregar2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Agregar2;
-        
-        /// <summary>
         /// Control txtNombreCliente.
         /// </summary>
         /// <remarks>
@@ -112,42 +94,6 @@ namespace SistemaPOS {
         protected global::System.Web.UI.WebControls.GridView grvListado;
         
         /// <summary>
-        /// Control btnCalcular.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCalcular;
-        
-        /// <summary>
-        /// Control TxtDescuento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDescuento;
-        
-        /// <summary>
-        /// Control BtnDescuento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnDescuento;
-        
-        /// <summary>
-        /// Control txtSubTotal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubTotal;
-        
-        /// <summary>
         /// Control TxtTotal.
         /// </summary>
         /// <remarks>
@@ -157,21 +103,57 @@ namespace SistemaPOS {
         protected global::System.Web.UI.WebControls.TextBox TxtTotal;
         
         /// <summary>
-        /// Control BtnProcesarFactura.
+        /// Control ddlFormaPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnProcesarFactura;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFormaPago;
         
         /// <summary>
-        /// Control LblMensaje.
+        /// Control txtMontoCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblMensaje;
+        protected global::System.Web.UI.WebControls.TextBox txtMontoCliente;
+        
+        /// <summary>
+        /// Control txtVuelto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtVuelto;
+        
+        /// <summary>
+        /// Control txtNúmero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNúmero;
+        
+        /// <summary>
+        /// Control btnProcesar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnProcesar;
+        
+        /// <summary>
+        /// Control btnCalcularVuelto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCalcularVuelto;
     }
 }

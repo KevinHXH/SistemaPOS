@@ -72,7 +72,8 @@ namespace SistemaPOS
                  monto = (subtotal + total);
                  montoTotal = monto + (monto * p.impuesto/100);
                 txtSubTotal.Text = subtotal.ToString();
-                TxtTotal.Text = montoTotal.ToString();  
+                TxtTotal.Text = montoTotal.ToString();
+                Session["MontoTotal"] = TxtTotal.Text;
             }
         }
         public void calcula2X1()
@@ -88,8 +89,7 @@ namespace SistemaPOS
 
         public void calcula2X1Factura()
         {
-            DetalleFacturaLN detalle = new DetalleFacturaLN();
-            detalle.calcula2X1(2);
+            DetalleFacturaLN.calcula2X1(2);
         }
 
 
@@ -116,20 +116,51 @@ namespace SistemaPOS
 
         protected void BtnProcesarFactura_Click(object sender, EventArgs e)
         {
-            LblMensaje.Text = "Factura Procesada con éxito";
-            grvListado.DataBind();
+            Session["NombreCliente"] = txtNombreCliente.Text;
+            Response.Redirect("Factura.aspx");
         }
 
         protected void btnCalcular_Click(object sender, EventArgs e)
         {
-            for (int fila = 0; fila < grvListado.Rows.Count - 1; fila++)
-            {
-                for (int col = 0; col < grvListado.Rows[fila].Cells.Count; col++)
-                {
-                    string valor = grvListado.Rows[fila].Cells[5].ToString();      
-                }
-            }
+            ////Obtener fila actual
+            //GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+            //TextBox txtCantidad = (TextBox)currentRow.FindControl("CantidadComprar");
+            //if (txtCantidad.Text != "")
+            //{
+            //    int cantidad = Convert.ToInt32(txtCantidad.Text);
+            //    decimal total = 0, subtotal = 0, monto = 0, montoTotal = 0, precioProducto = 0;
+            //    foreach (Producto p in listaX)
+            //    {
+            //        precioProducto = p.precioProducto * cantidad;
+            //        subtotal = subtotal + precioProducto;
+            //        monto = (subtotal + total);
+            //        montoTotal = monto + (monto * p.impuesto / 100);
+            //        txtSubTotal.Text = subtotal.ToString();
+            //        TxtTotal.Text = montoTotal.ToString();
+            //    }
+            //}
+        }
 
+        protected void CantidadComprar_TextChanged(object sender, EventArgs e)
+        {
+            //Obtener fila actual
+            GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+            TextBox txtCantidad = (TextBox)currentRow.FindControl("CantidadComprar");
+            if (txtCantidad.Text != "")
+            {
+                int cantidad = Convert.ToInt32(txtCantidad.Text);
+                decimal total = 0, subtotal = 0, monto = 0, montoTotal = 0, precioProducto = 0;
+                foreach (Producto p in listaX)
+                {
+                    precioProducto = p.precioProducto * cantidad;
+                    subtotal = subtotal + precioProducto;
+                    monto = (subtotal + total);
+                    montoTotal = monto + (monto * p.impuesto / 100);
+                    txtSubTotal.Text = subtotal.ToString();
+                    TxtTotal.Text = montoTotal.ToString();
+                }
+
+            }
         }
 
 

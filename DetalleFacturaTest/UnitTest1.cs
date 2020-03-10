@@ -16,6 +16,15 @@ namespace DetalleFacturaTest
             Assert.AreEqual(resultadoEsperado, resObtenido);
         }
 
+        [TestMethod]
+        public void calcularVuelto()
+        {
+            decimal cliente = 200000;
+            decimal total = 150000;
+            int resultadoEsperado = 50000;
+            decimal resObtenido = DetalleFacturaLN.calcularMontoVuelto(cliente, total);
+            Assert.AreEqual(resultadoEsperado, resObtenido);
+        }
 
 
 

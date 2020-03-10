@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Facturacion.aspx.cs" Inherits="SistemaPOS.Facturacion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Factura.aspx.cs" Inherits="SistemaPOS.Factura" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
@@ -10,7 +10,7 @@
 <meta name="description" content=""/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Facturación</title>
+    <title>Factura</title>
  <!-- Favicon  -->
     <link rel="icon" href="img/core-img/favicon.ico"/>
     <!-- Core Style CSS -->
@@ -100,24 +100,7 @@
         <br />
         <br />
 
-
-
-        
              <div style="margin-left: 155px; margin-top: -220px;">
-                 <table>
-                      <tr>
-                     <td>Producto:</td>
-                     <td>
-                         <asp:DropDownList ID="ddlProductoo" Style="width: 130px;height:40px;"  runat="server"></asp:DropDownList>
-                     </td>
-                     <td>
-                         <asp:Button ID="Agregar2" Style=" background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server"  Text="Agregar" OnClick="Agregar2_Click" autopostback="false" />
-                     </td>
-                 </tr>
-                 </table>
-                   <br /> 
-        
-        
                   <table>
                       <tr>
                      <td>Nombre del cliente:</td>
@@ -129,7 +112,7 @@
                  </table>            
                   <br /> 
                   <br />           
-                            <h4 class="mb-3">Productos a facturar</h4>
+                            <h4 class="mb-3">Factura</h4>
 
             <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
@@ -181,36 +164,59 @@
                             </asp:GridView>
                 <br /> 
                 <br /> 
-                 <asp:Button ID="btnCalcular" Style="margin-top: -26px; background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server"  Text="Calcular" OnClick="btnCalcular_Click" autopostback="false" />
                       </ContentTemplate>
                       </asp:UpdatePanel>
                      </div>
 
                    <table style="margin-left: 155px; margin-top: 160px; border-collapse: separate;">
-                 <tr>
-                     <td>
-                         Descuento:
-                         <asp:TextBox ID="TxtDescuento" Text="" runat="server"></asp:TextBox>    
-                     </td>
-                     <td>
-                         <asp:Button ID="BtnDescuento" Style="background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server" Text="Aplicar" OnClick="BtnDescuento_Click" />             
-                     </td>
-                     <td>
-                         Sub Total:
-                         <asp:TextBox ID="txtSubTotal" Text="" runat="server" Enabled="False" DataFormatString="{0:0.00}"></asp:TextBox>
-                     </td>                  
+                 <tr>               
                       <td>
                          Total:
                          <asp:TextBox ID="TxtTotal" Text="" runat="server" Enabled="False" DataFormatString="{0:0.00}"></asp:TextBox>
                      </td>
-                     <td>
-                         <asp:Button ID="BtnProcesarFactura" Style="background: #ff8000; border: #ff8000;" class="btn btn-primary" runat="server" Text="Facturar" OnClick="BtnProcesarFactura_Click" />
-                       <br />
-                     </td>
+                     
                  </tr>
-                       <asp:Label ID="LblMensaje" ForeColor="blue" runat="server" Text=""></asp:Label>
              </table>
-         
+
+        <table style="margin-left: 155px; margin-top: 30px; border-collapse: separate;">
+            <tr>
+
+                <td>Forma de Pago:
+                           <asp:DropDownList ID="ddlFormaPago" Style="width: 130px; height: 30px;" runat="server"></asp:DropDownList>
+                </td>
+            </tr>
+        </table>
+         <table style="margin-left: 155px; margin-top: 30px; border-collapse: separate;">
+            <tr>
+                <td>Cliente paga con:
+                    <asp:TextBox ID="txtMontoCliente" runat="server"></asp:TextBox>       
+                </td>
+            </tr>
+        </table>
+         <table style="margin-left: 155px; margin-top: 30px; border-collapse: separate;">
+            <tr>
+                <td>Vuelto:
+                    <asp:TextBox ID="txtVuelto" runat="server"></asp:TextBox>       
+                </td>
+            </tr>
+        </table>
+          <table style="margin-left: 155px; margin-top: 30px; border-collapse: separate;">
+            <tr>
+                <td>Número de tarjeta:
+                    <asp:TextBox ID="txtNúmero" runat="server"></asp:TextBox>       
+                </td>
+            </tr>
+        </table>
+         <table style="margin-left: 300px; margin-top: 30px; border-collapse: separate;">
+            <tr>
+               <asp:Button ID="btnProcesar" Style="background: #ff8000; margin-left: 155px; margin-top: 50px;border: #ff8000;" class="btn btn-primary" runat="server" Text="Procesar Factura" OnClick="btnProcesar_Click" autopostback="false" />
+            </tr>
+        </table>
+         <table style="margin-left: 300px; margin-top: 30px; border-collapse: separate;">
+            <tr>
+               <asp:Button ID="btnCalcularVuelto" Style="background: #ff8000; margin-left: 520px; margin-top: -545px;border: #ff8000;" class="btn btn-primary" runat="server" Text="Calcular Vuelto" OnClick="btnCalcularVuelto_Click" autopostback="false" />
+            </tr>
+        </table>
         <br /> 
         <br /> 
         <br /> 

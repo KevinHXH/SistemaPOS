@@ -131,6 +131,7 @@
     <Content Include="css\responsive.css" />
     <Content Include="css\style.css" />
     <Content Include="css\themify-icons.css" />
+    <Content Include="Factura.aspx" />
     <Content Include="Facturacion.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\themify.svg" />
@@ -339,6 +340,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Factura.aspx.cs">
+      <DependentUpon>Factura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Factura.aspx.designer.cs">
+      <DependentUpon>Factura.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Facturacion.aspx.cs">
       <DependentUpon>Facturacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

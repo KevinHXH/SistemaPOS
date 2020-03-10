@@ -22,10 +22,23 @@ namespace LogicaNegocio
             return costo;
         }
 
+        public static decimal calcularMontoVuelto(decimal totalCliente, decimal TotalPagar)
+        {
+            decimal monto = 0;
+            if (totalCliente>=TotalPagar)
+            {
+                monto = totalCliente - TotalPagar;
+            }
+            else
+            {
+                monto = 0;
+            }
+            return monto;
+        }
 
 
 
-        
+
 
 
 
